@@ -587,7 +587,7 @@ body.no-scroll {
 }
 
 .section-title-white {
-    font-size: 2.2rem;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
     margin-bottom: 20px;
     font-family: var(--font-heading);
 }
@@ -785,7 +785,8 @@ body.no-scroll {
     }
 
     .hero-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.4rem, 5vw, 2.0rem);
+        /* Fluid font size */
         line-height: 1.4;
         color: #333;
         margin-bottom: 30px;
