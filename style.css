@@ -751,8 +751,8 @@ body.no-scroll {
         height: 50vh;
         /* Takes top half */
         width: 100%;
-        background-image: url('hero_main.png');
-        background-position: center bottom;
+        background-image: url('hero_refresh.png');
+        background-position: center center;
         /* Adjusted alignment for new image */
         order: 1;
         /* Image first */
