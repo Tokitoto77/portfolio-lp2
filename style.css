@@ -587,9 +587,10 @@ body.no-scroll {
 }
 
 .section-title-white {
-    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
     margin-bottom: 20px;
     font-family: var(--font-heading);
+    line-height: 1.4;
 }
 
 .cta-message {
@@ -674,11 +675,9 @@ body.no-scroll {
     font-size: 0.8rem;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
-    /* Header */
-    /* Header */
+    /* Header & Nav - Tablet & Mobile */
     .header-container {
         padding: 0 15px;
     }
@@ -735,7 +734,7 @@ body.no-scroll {
         font-size: 0.8rem;
     }
 
-    /* Hero - Reference Image Style */
+    /* Hero - Stacking Layout */
     .hero {
         height: auto;
         /* Remove fixed height */
@@ -800,7 +799,10 @@ body.no-scroll {
         font-size: 0.8rem;
         margin-top: 5px;
     }
+}
 
+/* Mobile Specific (Phones) */
+@media (max-width: 768px) {
     .btn-primary {
         width: 100%;
         /* Full width button on mobile */
