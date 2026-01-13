@@ -587,7 +587,7 @@ body.no-scroll {
 }
 
 .section-title-white {
-    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    font-size: clamp(1.0rem, 4vw, 2.2rem);
     margin-bottom: 20px;
     font-family: var(--font-heading);
 }
