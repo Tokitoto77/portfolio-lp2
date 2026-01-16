@@ -291,26 +291,26 @@
                         <li>✅ 匿名でのお問い合わせも受け付けています</li>
                     </ul>
                 </div>
-                <form class="contact-form" action="#" onsubmit="alert('デモ：送信されました'); return false;">
+                <form class="contact-form" id="contact-form" action="#">
                     <div class="form-group">
                         <label>お名前 <span class="required">必須</span></label>
-                        <input type="text" placeholder="例：山田 花子" required>
+                        <input type="text" name="name" placeholder="例：山田 花子" required>
                     </div>
                     <div class="form-group">
                         <label>メールアドレス <span class="required">必須</span></label>
-                        <input type="email" placeholder="example@email.com" required>
+                        <input type="email" name="email" placeholder="example@email.com" required>
                     </div>
                     <div class="form-group">
                         <label>第1希望日時 <span class="required">必須</span></label>
-                        <input type="datetime-local" required>
+                        <input type="datetime-local" name="date1" required>
                     </div>
                     <div class="form-group">
                         <label>第2希望日時 <span class="required">必須</span></label>
-                        <input type="datetime-local" required>
+                        <input type="datetime-local" name="date2" required>
                     </div>
                     <div class="form-group">
                         <label>お悩み・ご質問</label>
-                        <textarea rows="4" placeholder="腰痛が気になります、など"></textarea>
+                        <textarea name="message" rows="4" placeholder="腰痛が気になります、など"></textarea>
                     </div>
                     <button type="submit" class="btn-submit">30秒で完了！体験レッスンを予約する</button>
                     <p class="privacy-text">送信することでプライバシーポリシーに同意したものとみなされます。</p>
