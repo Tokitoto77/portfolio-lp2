@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const GOOGLE_FORM_URL = 'https://script.google.com/macros/s/AKfycbxE3HeMqZYWSRy40zwRMDwEDqWAxwViBtfT9c3dxPkWNCPxSV_WlPL8VMTWMCGeFH4/exec';
 
     if (form) {
-        form.addEventListener('submit', async (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             const submitBtn = form.querySelector('.btn-submit');
             const originalBtnText = submitBtn.textContent;
@@ -55,33 +55,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(form);
 
-            // Convert to standard object for logging/debugging if needed
-            // const dataObj = Object.fromEntries(formData.entries());
+            // Use XHR (XMLHttpRequest) instead of fetch for better GAS compatibility
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', GOOGLE_FORM_URL, true);
 
-            try {
-                // Use fetch with mode: 'no-cors' to avoid CORS preflight issues with GAS
-                // IMPORTANT: With 'no-cors', we cannot read the response status or text.
-                // We assume success if no network error occurs.
-
-                await fetch(GOOGLE_FORM_URL, {
-                    method: 'POST',
-                    body: formData, // FormData matches naming expected by GAS e.parameter
-                    mode: 'no-cors'
-                });
-
-                // Assume success
+            // Handle response
+            xhr.onload = function () {
+                // Determine success based on status or assumption (since CORS might hide status)
+                // However, GAS redirects often cause status 0 or 200 via redirect.
                 alert('お申し込みありがとうございます！\n自動返信メールを送信しました。\n担当者より折り返しご連絡いたします。');
                 form.reset();
-
-            } catch (error) {
-                console.error('Error:', error);
-                // Even if fetch fails (e.g. network), we alert user. 
-                // Note: 'no-cors' won't throw on 4xx/5xx, only on network failure.
-                alert('送信に問題が発生した可能性がありますが、処理を完了しました。\n確認のため、自動返信メールが届いているかご確認ください。');
-            } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
-            }
+            };
+
+            xhr.onerror = function () {
+                // Network error
+                console.error('XHR Error');
+                alert('送信に問題が発生した可能性がありますが、完了している場合があります。\n自動返信メールをご確認ください。');
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            };
+
+            // Send data
+            xhr.send(formData);
         });
     }
 });
