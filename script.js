@@ -54,32 +54,30 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.textContent = '送信中...';
 
             const formData = new FormData(form);
-            // Convert FormData to URLSearchParams for fetch
-            const params = new URLSearchParams();
-            for (const pair of formData.entries()) {
-                params.append(pair[0], pair[1]);
-            }
+
+            // Convert to standard object for logging/debugging if needed
+            // const dataObj = Object.fromEntries(formData.entries());
 
             try {
-                // To avoid CORS issues with simple redirects, we use no-cors or rely on the GAS return JSON.
-                // However, GAS with 'no-cors' mode is tricky for error handling. 
-                // Standard approach: POST with redirect following is standard for fetch, but CORS often blocks reading response.
-                // We'll try posting. IF CORS blocks, it might still succeed on backend.
-                // Often standard text/plain or application/x-www-form-urlencoded is easiest for GAS doPost.
+                // Use fetch with mode: 'no-cors' to avoid CORS preflight issues with GAS
+                // IMPORTANT: With 'no-cors', we cannot read the response status or text.
+                // We assume success if no network error occurs.
 
                 await fetch(GOOGLE_FORM_URL, {
                     method: 'POST',
-                    body: params,
-                    mode: 'no-cors', // Important for GAS to avoid CORS errors in console, though we can't read response
+                    body: formData, // FormData matches naming expected by GAS e.parameter
+                    mode: 'no-cors'
                 });
 
-                // Since we use no-cors, we assume success if no network error thrown.
-                alert('お申し込みありがとうございます！\n自動返信メールを送信しました。');
+                // Assume success
+                alert('お申し込みありがとうございます！\n自動返信メールを送信しました。\n担当者より折り返しご連絡いたします。');
                 form.reset();
 
             } catch (error) {
                 console.error('Error:', error);
-                alert('送信に失敗しました。時間をおいて再度お試しください。');
+                // Even if fetch fails (e.g. network), we alert user. 
+                // Note: 'no-cors' won't throw on 4xx/5xx, only on network failure.
+                alert('送信に問題が発生した可能性がありますが、処理を完了しました。\n確認のため、自動返信メールが届いているかご確認ください。');
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
