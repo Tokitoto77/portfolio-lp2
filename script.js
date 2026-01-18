@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission Logic
     const form = document.getElementById('contact-form');
     // ↓↓↓ここにGASのWebアプリURLを貼り付けてください↓↓↓
-    const GOOGLE_FORM_URL = 'https://script.google.com/macros/s/AKfycbxfRoZIQf7wjVRarVNnqrcOtKhTEq4bmss3o1Np26zul-bDg8wSNGHXQjhmoJQY-O8/exec';
+    const GOOGLE_FORM_URL = 'https://script.google.com/macros/s/AKfycbwxnqvCut98VKjptAnHq_hl38M5P9bqpsoCN0wL1_tMs-sfQrh_b744sUHldtgZoe8/exec';
 
     if (form) {
         form.addEventListener('submit', async (e) => {
