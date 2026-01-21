@@ -20,22 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Weekday display logic
-    const dateInputs = document.querySelectorAll('.date-input');
-    const weekdays = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)'];
+    /**
+     * flatpickr - MIT License
+     * https://flatpickr.js.org/
+     */
+    // 日時選択カレンダーの初期化
+    flatpickr("#date1", {
+        enableTime: false,
+        dateFormat: "Y/m/d",
+        locale: "ja",
+        minDate: "today"
+    });
 
-    dateInputs.forEach(input => {
-        input.addEventListener('change', (e) => {
-            const dateValue = new Date(e.target.value);
-            const displaySpan = e.target.nextElementSibling;
-
-            if (!isNaN(dateValue.getTime())) {
-                const dayOfWeek = weekdays[dateValue.getDay()];
-                displaySpan.textContent = dayOfWeek;
-            } else {
-                displaySpan.textContent = '';
-            }
-        });
+    flatpickr("#date2", {
+        enableTime: false,
+        dateFormat: "Y/m/d",
+        locale: "ja",
+        minDate: "today"
     });
 
     // Form Submission Logic
