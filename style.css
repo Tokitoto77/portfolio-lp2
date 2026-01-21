@@ -693,6 +693,14 @@ body.no-scroll {
     box-sizing: border-box;
 }
 
+/* flatpickr日付入力の明示的なスタイル強制 */
+.form-group input.flatpickr-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    background-color: #fff !important;
+}
+
 .btn-submit {
     display: block;
     width: 100%;
