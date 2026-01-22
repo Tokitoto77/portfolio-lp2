@@ -685,6 +685,7 @@ body.no-scroll {
 .form-group select,
 .form-group textarea {
     width: 100%;
+    max-width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -693,12 +694,22 @@ body.no-scroll {
     box-sizing: border-box;
 }
 
-/* flatpickr日付入力の明示的なスタイル強制 */
-.form-group input.flatpickr-input {
+/* flatpickr日付入力の明示的なスタイル強化 */
+.form-group input.flatpickr-input,
+.form-group input[type="text"]#date1,
+.form-group input[type="text"]#date2 {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     background-color: #fff !important;
+    padding: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    font-size: 1rem !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    display: block !important;
 }
 
 .btn-submit {
@@ -930,6 +941,18 @@ body.no-scroll {
 
     .plan-body {
         padding: 20px;
+    }
+
+    /* モバイルでの日付入力フィールドの追加調整 */
+    .form-group input#date1,
+    .form-group input#date2,
+    .form-group input.flatpickr-input {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        font-size: 16px !important;
+        /* iOS Safari でズームを防ぐ */
     }
 
     /* Access */

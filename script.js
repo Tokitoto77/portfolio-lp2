@@ -29,14 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
         enableTime: false,
         dateFormat: "Y/m/d",
         locale: "ja",
-        minDate: "today"
+        minDate: "today",
+        disableMobile: false, // モバイルモードを有効化
+        allowInput: true, // キーボード入力を許可
+        clickOpens: true // クリックでカレンダーを開く
     });
 
     flatpickr("#date2", {
         enableTime: false,
         dateFormat: "Y/m/d",
         locale: "ja",
-        minDate: "today"
+        minDate: "today",
+        disableMobile: false,
+        allowInput: true,
+        clickOpens: true
     });
 
     // Form Submission Logic
