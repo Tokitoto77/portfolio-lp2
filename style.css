@@ -717,6 +717,16 @@ body.no-scroll {
     -moz-appearance: none !important;
     appearance: none !important;
     display: block !important;
+    flex-shrink: 1 !important;
+    flex-grow: 0 !important;
+}
+
+/* flatpickrが生成するwrapper要素の制御 */
+.form-group .flatpickr-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+    box-sizing: border-box !important;
 }
 
 .btn-submit {
