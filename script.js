@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dateFormat: "Y/m/d",
         locale: "ja",
         minDate: "today",
-        disableMobile: false, // モバイルモードを有効化
+        disableMobile: true, // iOS Safariでもflatpickr UIを使用
         allowInput: true, // キーボード入力を許可
         clickOpens: true // クリックでカレンダーを開く
     });
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dateFormat: "Y/m/d",
         locale: "ja",
         minDate: "today",
-        disableMobile: false,
+        disableMobile: true,
         allowInput: true,
         clickOpens: true
     });
