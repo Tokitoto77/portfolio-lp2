@@ -654,15 +654,21 @@ body.no-scroll {
 .contact-form {
     background: white;
     max-width: 600px;
+    width: 100%;
     margin: 0 auto;
     padding: 40px;
     border-radius: 10px;
     text-align: left;
     color: var(--text-color);
+    box-sizing: border-box;
+    overflow: hidden;
+    /* コンテンツのはみ出しを防止 */
 }
 
 .form-group {
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .form-group label {
@@ -700,6 +706,7 @@ body.no-scroll {
 .form-group input[type="text"]#date2 {
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
     background-color: #fff !important;
     padding: 12px !important;
@@ -937,6 +944,8 @@ body.no-scroll {
     .plan-card,
     .contact-form {
         padding: 20px;
+        width: 100%;
+        max-width: 100%;
     }
 
     .plan-body {
